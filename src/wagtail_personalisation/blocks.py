@@ -16,9 +16,11 @@ class PersonalisedStructBlock(blocks.StructBlock):
 
     segment = blocks.ChoiceBlock(
         choices=list_segment_choices,
-        default=-1, # default Show to Everyone
-        required=False, label=_("Personalisation segment"),
-        help_text=_("Only show this content block for users in this segment"))
+        default=-1,  # default Show to Everyone
+        required=False,
+        label=_("Personalisation segment"),
+        help_text=_("Only show this content block for users in this segment"),
+    )
 
     def render(self, value, context=None):
         """Only render this content block for users in this segment.
@@ -31,11 +33,10 @@ class PersonalisedStructBlock(blocks.StructBlock):
         :rtype: blocks.StructBlock or empty str
 
         """
-        if context is None or 'request' not in context:
-            return super(PersonalisedStructBlock, self).render(
-                value, context)
+        if context is None or "request" not in context:
+            return super(PersonalisedStructBlock, self).render(value, context)
 
-        request = context['request']
+        request = context["request"]
         adapter = get_segment_adapter(request)
         user_segments = adapter.get_segments()
 
