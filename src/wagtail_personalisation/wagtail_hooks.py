@@ -176,7 +176,7 @@ else:
 if WAGTAIL_VERSION >= (5, 2):
 
     @hooks.register("register_page_listing_variant_buttons")
-    def page_listing_more_buttons(page, user, is_parent=False, *args):
+    def page_listing_more_buttons(page, user, is_parent=False, next_url=None, *args):
         """Adds a 'more' button to personalisable pages allowing users to quickly
         create a new variant for the selected segment.
 
