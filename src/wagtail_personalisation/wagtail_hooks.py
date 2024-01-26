@@ -74,7 +74,7 @@ class UserbarSegmentedLinkItem:
         self.segment = segment
 
     def render(self, request):
-        return f"""<div class="wagtail-userbar__item">
+        return f"""<div class="w-userbar__item">
             <a href="{request.path}?segment={self.segment.pk}"
                 class="wagtail-action">
                     Show as segment: {self.segment.name}</a></div>"""
