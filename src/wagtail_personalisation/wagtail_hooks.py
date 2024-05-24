@@ -190,8 +190,12 @@ if WAGTAIL_VERSION >= (5, 2):
             yield Button(
                 "%s variant" % (vm.segment.name),
                 reverse("wagtailadmin_pages:edit", args=[vm.variant_id]),
-                attrs={"title": _("Edit this variant")},
-                classname=("icon", "icon-edit"),
+                attrs={
+                    "title": _("Edit this variant"),
+                    "class": "icon icon-edit" # does work but not needed 
+                },
+                icon_name='edit', # seems to be the newer wagtail convention
+                classname="icon icon-edit", # dosen't seem to work but should
                 priority=0,
             )
 
