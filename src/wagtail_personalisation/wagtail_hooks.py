@@ -59,6 +59,8 @@ def segment_user(page, request, serve_args, serve_kwargs):
     :type request: django.http.HttpRequest
 
     """
+    if not isinstance(page, models.PersonalisablePageMixin):
+        return
     adapter = get_segment_adapter(request)
     adapter.refresh()
 
